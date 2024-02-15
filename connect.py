@@ -25,14 +25,15 @@ def get_words():
 def start():
     driver.get(url)
     driver.set_window_size(800, 800)
-    wait.until(EC.presence_of_element_located((By.XPATH, buttons.WORD)))
 
 
 def get_coml(button):
-    compl = driver.find_element(By.XPATH, button)
-    match = re.search(r'{(\d+)', compl.text)
-    result = int(match.group(1))
-    return result
+    while True:
+        compl = wait.until(EC.presence_of_element_located((By.XPATH, button)))
+        match = re.search(r'{(\d+)', compl.text)
+        result = int(match.group(1)) if match else None
+        if result is not None:
+            return result
 
 
 def click(index):
