@@ -36,7 +36,7 @@ def get_coml(button):
             return result
 
 
-def click(index):
+def word_click(index):
     xpath = buttons.buttons_xpath(index)
     button = wait.until(EC.presence_of_element_located((By.XPATH, xpath)))
     button.click()

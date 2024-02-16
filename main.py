@@ -1,8 +1,6 @@
 from os import system
 import connect
-import time
 import buttons
-import random
 
 
 def count_matches(words):
@@ -43,7 +41,6 @@ def get_results(word_list):
     results = []
     for i in range(len(word_list)):
         results.append(count_matches_with_word(word_list, word_list[i]))
-        #print(f"{results[i]} {word_list[i]} {i+1}")
     return results
 
 
@@ -52,13 +49,6 @@ def find_button(nums_of_sim,button_index):
     lst = results[button_index]
     index = lst.index(nums_of_sim)
     return index
-
-
-def refresh(word_list):
-    system('cls')
-    print(count_matches(word_list))
-    print("\n")
-    get_results(word_list)
 
 
 def get_max_index(word_list):
@@ -74,46 +64,52 @@ def get_max_index(word_list):
 
 
 def print_words(words, indexes:list):
+    system('cls')
     indexes.sort()
     newindx = []
     for index in indexes:
         if 1 <= index <= len(words):
             newindx.append(index)
-            #print(f"{words[index - 1]} - {index}")
+            print(f"{words[index - 1]} - {index}")
 
     newindx.reverse()
     return newindx
 
+
+def full_next():
+    try:
+        connect.element_click(buttons.NEXT)
+        input("press enter")
+        return True
+    except:
+        return False
 
 connect.start()
 while True:
     word_list = connect.get_words()
     while True:
         try:
-            refresh(word_list)
-            #first_word_index = get_max_index(count_matches(word_list))
-            #print(word_list[first_word_index],first_word_index+1)
-            #chose_index = int(input("input 1 choosen word index"))
+            get_results(word_list)
             chose_index = len(word_list)
-            connect.click(chose_index)
+            connect.word_click(chose_index)
             try1 = (inc(find_all_indexes(results[chose_index-1],connect.get_coml(buttons.COMPL))))
             indexes = print_words(word_list,try1)
-            #chose_index = int(input("input 2 choosen word index"))
             chose_index = indexes[0]
-            connect.click(chose_index)
+            connect.word_click(chose_index)
             try2 = (inc(find_all_indexes(results[chose_index-1],connect.get_coml(buttons.COMPL2))))
             common_elements = list(set(try1) & set(try2))
+
             indexes = print_words(word_list,common_elements)
-            #chose_index = int(input("input 3 choosen word index"))
             chose_index = indexes[0]
-            connect.click(chose_index)
+            connect.word_click(chose_index)
             try3 = (inc(find_all_indexes(results[chose_index-1],connect.get_coml(buttons.COMPL3))))
             common_elements = list(set(try1) & set(try2) & set(try3))
             indexes = print_words(word_list,common_elements)
+            
             chose_index = indexes[0]
-            connect.click(chose_index)
-            input("Update Good One")
+            connect.word_click(chose_index)
+            input("Press Enter")
             break
         except:
-            input("Error")
+            input("Press Enter")
             break

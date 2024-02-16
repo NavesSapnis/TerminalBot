@@ -5,6 +5,7 @@ WORD ="/html/body/div[1]/div/div[1]/main/div/main/div/button[1]/div/div[2]"
 COMPL = "/html/body/div[1]/div/div[1]/main/div/header/div[4]/div[2]/div[2]/div/div/div/p[2]"
 COMPL2 = "/html/body/div[1]/div/div[1]/main/div/header/div[4]/div[2]/div[2]/div/div[2]/div/p[2]"
 COMPL3 = "/html/body/div[1]/div/div[1]/main/div/header/div[4]/div[2]/div[2]/div/div[3]/div/p[2]"
+NEXT = "/html/body/div[1]/div/div[1]/main/div/footer/div[2]/button[2]"
 
 
 def buttons_xpath(index):
