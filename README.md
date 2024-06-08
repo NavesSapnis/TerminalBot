@@ -41,4 +41,9 @@ Start
   python main.py
 ```
 Or use .exe file 😊
-
+## Ussage
+- Run script and wait for it to load 
+- Log in to your evm wallet, which is tied to your account (you can install any other and log in under it, but rabby is more convenient)
+- Go back to the game's website and refresh the page
+- Log in with your wallet and then start the game, when the game words are on the screen, press “enter” in the application window
+- Enjoy (If you have any problems, let me know)
